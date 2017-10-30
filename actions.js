@@ -1,12 +1,12 @@
 import uuid from uuid;
 
-const ADD_COMMENT = 'CREATE_COMMENT',
-    EDIT_COMMENT = 'EDIT_COMMENT',
-    REMOVE_COMMENT = 'REMOVE_COMMENT',
-    THUMB_UP_COMMENT = 'THUMB_UP_COMMENT',
-    THUMB_DOWN_COMMENT = 'THUMB_DOWN_COMMENT';
+export const ADD_COMMENT = 'ADD_COMMENT';
+export const EDIT_COMMENT = 'EDIT_COMMENT';
+export const REMOVE_COMMENT = 'REMOVE_COMMENT';
+export const THUMB_UP_COMMENT = 'THUMB_UP_COMMENT';
+export const THUMB_DOWN_COMMENT = 'THUMB_DOWN_COMMENT';
 
-addComment = text => {
+const addComment = text => {
     return {
         type: ADD_COMMENT,
         text,
@@ -14,7 +14,7 @@ addComment = text => {
     }
 }
 
-editComment = (text, id) => {
+const editComment = (text, id) => {
     return {
         type: EDIT_COMMENT,
         text,
@@ -22,31 +22,31 @@ editComment = (text, id) => {
     }
 }
 
-removeComment = id => {
+const removeComment = id => {
     return {
         type: REMOVE_COMMENT,
         id
     }
 }
 
-thumbUpComment = (id, likes) => {
+const thumbUpComment = (id, likes) => {
     return {
         type: THUMB_UP_COMMENT,
         id,
-        likes: ++likes
+        votesUp: ++likes
     }
 }
 
-thumbDownComment = (id, dislikes) => {
+const thumbDownComment = (id, dislikes) => {
     return {
         type: THUMB_DOWN_COMMENT,
         id,
-        dislikes: ++dislikes
+        votesDown: ++dislikes
     }
 }
 
-const boundAddComment = text => dispatch(addComment(text)),
-    boundEditComment = (text, id) => dispatch(editComment(text, id)),
-    boundRemoveComment = id => dispatch(removeComment(id)),
-    boundThumbUpComment = (id, likes) => dispatch(thumbUpComment(id, likes)),
-    boundThumbDownComment = (id, likes) => dispatch(thumbDownComment(id, dislikes));
+const boundAddComment = text => dispatch(addComment(text));
+const boundEditComment = (text, id) => dispatch(editComment(text, id));
+const boundRemoveComment = id => dispatch(removeComment(id));
+const boundThumbUpComment = (id, likes) => dispatch(thumbUpComment(id, likes));
+const boundThumbDownComment = (id, likes) => dispatch(thumbDownComment(id, dislikes));
