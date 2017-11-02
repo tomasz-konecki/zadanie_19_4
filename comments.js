@@ -20,7 +20,8 @@ export const comments = (state = initialState, action) => {
             break;
 
         case EDIT_COMMENT:
-            if (state.comments.find(comment => (comment.id === action.id))) {
+            const check = state.comments.find(comment => (comment.id === action.id));
+            if (check) {
                 return comment.text = action.text;
             } else {
                 return state;
@@ -28,16 +29,28 @@ export const comments = (state = initialState, action) => {
             break;
 
         case THUMB_UP_COMMENT:
-            if (state.comments.find(comment => (comment.id === action.id))) {
-                return comment.votesUp += 1;
+            const check = state.comments.find(comment => (comment.id === action.id));
+            if (check) {
+                const index = state.comments.indexOf(check);
+                return [
+                   ...comments.slice(0, index),
+                   {..comments[index], {votesUp: comments[index].votesUp + 1},
+                   ...comments.slice(index+1, comments.length)
+                ];
             } else {
                 return state;
             }
             break;
 
         case THUMB_DOWN_COMMENT:
-            if (state.comments.find(comment => (comment.id === action.id))) {
-                return comment.votesDown += 1;
+            const check = state.comments.find(comment => (comment.id === action.id));
+            if (check) {
+                const index = state.comments.indexOf(check);
+                return [
+                   ...comments.slice(0, index),
+                   {..comments[index], {votesDown: comments[index].votesDown + 1},
+                   ...comments.slice(index+1, comments.length)
+                ];
             } else {
                 return state;
             }
