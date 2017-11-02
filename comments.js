@@ -24,7 +24,7 @@ export const comments = (state = [], action) => {
                 const index = state.comments.indexOf(check);
                 return [
                    ...state.comments.slice(0, index),
-                   {...state.comments[index], {text: action.text}},
+                   {...state.comments[index], text: action.text},
                    ...state.comments.slice(index+1, state.comments.length)
                 ];
             } else {
@@ -38,7 +38,7 @@ export const comments = (state = [], action) => {
                 const index = state.comments.indexOf(check);
                 return [
                    ...state.comments.slice(0, index),
-                   {...state.comments[index], {votesUp: state.comments[index].votesUp + 1}},
+                   {...state.comments[index], votesUp: state.comments[index].votesUp + 1},
                    ...state.comments.slice(index+1, state.comments.length)
                 ];
             } else {
@@ -52,7 +52,7 @@ export const comments = (state = [], action) => {
                 const index = state.comments.indexOf(check);
                 return [
                    ...state.comments.slice(0, index),
-                   {...state.comments[index], {votesDown: state.comments[index].votesDown + 1}},
+                   {...state.comments[index], votesDown: state.comments[index].votesDown + 1},
                    ...state.comments.slice(index+1, state.comments.length)
                 ];
             } else {
