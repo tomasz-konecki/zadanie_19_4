@@ -20,15 +20,27 @@ export const comments = (state = initialState, action) => {
             break;
 
         case EDIT_COMMENT:
-            return state.comments.find(comment => (comment.id === action.id)).text = action.text;
+            if (state.comments.find(comment => (comment.id === action.id))) {
+                return comment.text = action.text;
+            } else {
+                return state;
+            }
             break;
 
         case THUMB_UP_COMMENT:
-            return state.comments.find(comment => (comment.id === action.id)).votesUp++;
+            if (state.comments.find(comment => (comment.id === action.id))) {
+                return comment.votesUp += 1;
+            } else {
+                return state;
+            }
             break;
 
         case THUMB_DOWN_COMMENT:
-            return state.comments.find(comment => (comment.id === action.id)).votesDown++;
+            if (state.comments.find(comment => (comment.id === action.id))) {
+                return comment.votesDown += 1;
+            } else {
+                return state;
+            }
             break;
 
         case REMOVE_COMMENT:
