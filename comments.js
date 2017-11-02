@@ -5,7 +5,7 @@ const initialState = {
     users: []
 };
 
-export const comments = (state = initialState, action) => {
+export const comments = (state = [], action) => {
 
     switch (action.type) {
 
@@ -21,7 +21,12 @@ export const comments = (state = initialState, action) => {
         case EDIT_COMMENT:
             const check = state.comments.find(comment => (comment.id === action.id));
             if (check) {
-                return check.text = action.text;
+                const index = state.comments.indexOf(check);
+                return [
+                   ...state.comments.slice(0, index),
+                   {...state.comments[index], {text: action.text}},
+                   ...state.comments.slice(index+1, state.comments.length)
+                ];
             } else {
                 return state;
             }
