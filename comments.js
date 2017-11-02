@@ -21,7 +21,7 @@ export const comments = (state = initialState, action) => {
         case EDIT_COMMENT:
             const check = state.comments.find(comment => (comment.id === action.id));
             if (check) {
-                return comment.text = action.text;
+                return check.text = action.text;
             } else {
                 return state;
             }
@@ -32,9 +32,9 @@ export const comments = (state = initialState, action) => {
             if (check) {
                 const index = state.comments.indexOf(check);
                 return [
-                   ...comments.slice(0, index),
-                   {...comments[index], {votesUp: comments[index].votesUp + 1}},
-                   ...comments.slice(index+1, comments.length)
+                   ...state.comments.slice(0, index),
+                   {...state.comments[index], {votesUp: state.comments[index].votesUp + 1}},
+                   ...state.comments.slice(index+1, state.comments.length)
                 ];
             } else {
                 return state;
@@ -46,9 +46,9 @@ export const comments = (state = initialState, action) => {
             if (check) {
                 const index = state.comments.indexOf(check);
                 return [
-                   ...comments.slice(0, index),
-                   {...comments[index], {votesDown: comments[index].votesDown + 1}},
-                   ...comments.slice(index+1, comments.length)
+                   ...state.comments.slice(0, index),
+                   {...state.comments[index], {votesDown: state.comments[index].votesDown + 1}},
+                   ...state.comments.slice(index+1, state.comments.length)
                 ];
             } else {
                 return state;
