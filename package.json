@@ -1,0 +1,23 @@
+{
+  "name": "zadanie_19_4",
+  "version": "1.0.0",
+  "description": "Reducer",
+  "main": "actions.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomasz-konecki/zadanie_19_4.git"
+  },
+  "author": "TK",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomasz-konecki/zadanie_19_4/issues"
+  },
+  "homepage": "https://github.com/tomasz-konecki/zadanie_19_4#readme",
+  "dependencies": {
+    "redux": "^3.7.2",
+    "uuid": "^3.1.0"
+  }
+}
