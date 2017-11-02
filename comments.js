@@ -33,7 +33,7 @@ export const comments = (state = initialState, action) => {
                 const index = state.comments.indexOf(check);
                 return [
                    ...comments.slice(0, index),
-                   {..comments[index], {votesUp: comments[index].votesUp + 1}},
+                   {...comments[index], {votesUp: comments[index].votesUp + 1}},
                    ...comments.slice(index+1, comments.length)
                 ];
             } else {
@@ -47,7 +47,7 @@ export const comments = (state = initialState, action) => {
                 const index = state.comments.indexOf(check);
                 return [
                    ...comments.slice(0, index),
-                   {..comments[index], {votesDown: comments[index].votesDown + 1}},
+                   {...comments[index], {votesDown: comments[index].votesDown + 1}},
                    ...comments.slice(index+1, comments.length)
                 ];
             } else {
